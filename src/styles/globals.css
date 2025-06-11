@@ -6,7 +6,10 @@
   --color-text: #ffffff;
   --color-muted: #b3b3b3;
   --color-card: #1e1e1e;
+  --color-yellow: #F5C518;
 }
+
+/* Global Styles - outside :root */
 body {
   font-family: sans-serif;
   background: var(--color-primary);
@@ -15,11 +18,32 @@ body {
   margin: auto;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
+h1 {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 1.17em;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+h5 {
+  font-weight:lighter;
+  font-size: 0.90em;
+}
+
 h6 {
-  font: bold 1.5rem;
+  font-weight: bold;
+  font-size: 0.67em;
 }

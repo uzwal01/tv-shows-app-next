@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { HiBars3BottomLeft } from "react-icons/hi2";
 import { IoMdSearch } from "react-icons/io";
@@ -14,17 +15,19 @@ const Header = () => {
 
   return (
     <>
-      <section className="py-5 px-4">
+      <section className="py-5 px-4 md:px-0">
         <div className="grid grid-cols-3 text-center gap-2 md:grid-flow-col">
           <div className="flex gap-4 items-center">
             <HiBars3BottomLeft className="text-[var(--color-muted)] hover:text-[var(--color-secondary)] transition text-2xl cursor-pointer" />
-            <Image
+            <Link href="/">
+              <Image
               src="/iFlix.png"
               width={130}
               height={100}
               alt="iFlix logo"
               className="cursor-pointer"
             />
+            </Link>
           </div>
           <div className="flex justify-center items-center">
             <form

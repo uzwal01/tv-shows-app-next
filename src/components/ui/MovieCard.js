@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const MovieCard = ({ item }) => {
@@ -9,41 +10,61 @@ const MovieCard = ({ item }) => {
     ? `${IMAGE_BASE_URL}${item.poster_path}`
     : "/image.png";
 
-  return (
-    <div className="w-full max-w-[210px] bg-white rounded overflow-hidden flex flex-col mx-5 shadow-gray-600 shadow-lg hover:shadow-2xl cursor-pointer transition-transform duraton-300 ease-in-out">
-      {/* Image container */}
-      <div className="relative w-full h-[275px]">
-        <Image
-          src={posterSrc}
-          alt={title}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-t"
-          sizes="(max-width: 768px) 100vw, 33vw"
-          priority={false}
-        />
-      </div>
 
-      {/* Content below image */}
-      <div className="flex flex-col justify-between p-3 h-[130px]">
-        {/* Rating box */}
-        <div className="min-h-[45px] flex items-start">
-          <div className="bg-yellow-500 text-white rounded w-[40px] h-[30px] flex items-center justify-center">
-            <span className="text-black text-sm font-semibold">{rating}</span>
+  const type = item.title ? "movie" : "tv";
+
+
+  return (
+    <>
+      <Link href={`/details/${type}/${item.id}-${title}`}>
+
+        <div className="group flex items-center gap-4 sm:gap-0 justify-center sm:flex-col">
+        <div className="w-[160px] h-[230px] max-w-[210px] sm:mx-5 bg-white rounded overflow-hidden shadow-gray-600 shadow-lg group-hover:shadow-2xl cursor-pointer transition-transform duraton-300 ease-in-out">
+          {/* Image container */}
+
+          <div className="relative w-full h-full">
+            <Image
+              src={posterSrc}
+              alt={title}
+              width={190}
+              height={100}
+              objectFit="cover"
+              className="rounded-sm sm:rounded-t-sm mx-auto"
+              sizes="(max-width: 768px) 100vw, 33vw"
+              priority={false}
+            />
           </div>
         </div>
 
-        {/* Title and year */}
-        <div>
-          <h3 className="text-black text-sm font-semibold line-clamp-2 h-[40px]">
-            {title}
-          </h3>
-          <span className="text-[var(--color-muted)] text-xs">
-            {item.release_date?.slice(0, 4) || "N/A"}
-          </span>
+        {/* Content below image */}
+      <div className="w-[160px] h-[120px] max-w-[210px] mx-auto cursor-pointer ">
+         <div className="flex flex-col justify-between py-3">
+          {/* Rating box */}
+          <div className="min-h-[30px] flex items-center justify-between">
+            <div className="bg-[var(--color-yellow)]  rounded w-[38px] h-[29px] flex items-center justify-center">
+              <span className="text-black text-sm font-semibold">{rating}</span>
+            </div>
+
+            {/* Released Year */}
+            <div className="">
+              <span className="text-[var(--color-muted)] text-xs">
+                {item.release_date?.slice(0, 4) || "N/A"}
+              </span>
+            </div>
+          </div>
+
+          {/* Title */}
+          <div className="pt-4">
+            <h5 className="text-sm font-semibold line-clamp-2 h-[40px] text-[var(--color-text)] group-hover:text-[var(--color-secondary)] transition-colors duration-300">
+              {title}
+            </h5>
+          </div>
         </div>
       </div>
-    </div>
+       
+      </div>
+      </Link>
+    </>
   );
 };
 

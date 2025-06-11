@@ -10,8 +10,6 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         {children}
-        <LatestMovieSection />
-        <LatestTVSection />
         <Footer />
       </body>
     </html>
