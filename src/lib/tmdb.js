@@ -56,3 +56,8 @@ export async function getMediaDetails(type, id) {
 export async function getYoutubeTrailer(type, id) {
   return FetchFromTMDB(`/${type}/${id}?language=en-US&append_to_response=videos`)
 }
+
+export async function getGenreMapping(type) {
+  const res = await FetchFromTMDB(`/genre/${type}/list?language=en-US`);
+  return res?.genres || []; // ✅ Return only the genres array
+}

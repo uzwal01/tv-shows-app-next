@@ -14,7 +14,7 @@ const LatestMovieSection = () => {
 
   useEffect(() => {
     async function fetchLatestMovies() {
-      const data = await getLatestMovies("all", "day");
+      const data = await getLatestMovies();
       setLatestMovies(data && data.results ? data.results : []);
     }
 

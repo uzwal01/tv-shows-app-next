@@ -13,7 +13,7 @@ const LatestTVSection = () => {
 
   useEffect(() => {
     async function fetchLatestTV() {
-      const data = await getLatestTV("all", "day");
+      const data = await getLatestTV();
       setLatestTV(data && data.results ? data.results : []);
     }
 
