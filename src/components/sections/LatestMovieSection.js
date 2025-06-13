@@ -28,7 +28,7 @@ const LatestMovieSection = () => {
         <BiSolidCameraMovie className="text-[1.9em] text-[var(--color-secondary)]"/>
         <h2>Latest Movies</h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 place-items-center gap-x-3 gap-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 place-items-center gap-x-3 gap-y-4">
         {latestMovies.slice(0, limit).map((movie) => (
           <MovieCard key={movie.id} item={movie} />
         ))}

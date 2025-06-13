@@ -1,5 +1,5 @@
 "use client";
-import { getGenreMapping, getTrendingMedia } from "@/lib/tmdb";
+import { getGenreList, getGenreMapping, getTrendingMedia } from "@/lib/tmdb";
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Navigation } from "swiper/modules";
@@ -12,26 +12,20 @@ import TrendingCard from "../ui/TrendingCard";
 
 const TrendingSection = () => {
   const [trending, setTrending] = useState([]);
-  // const [genres, setGenres] = useState([]);
+  const [genres, setGenres] = useState([]); //Stores all genre_list in setGenres
+
   const [swiperReady, setSwiperReady] = useState(false);
+
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
   useEffect(() => {
     async function fetchTrendingMedia() {
       const data = await getTrendingMedia("all", "day");
+      const genreData = await getGenreList();
+
       setTrending(data?.results || []);
-
-      // // Fetch Genres
-      // const movieGenres = await getGenreMapping("movie");
-      // const tvGenres = await getGenreMapping("tv");
-      // const combinedGenres = [...movieGenres, ...tvGenres];
-
-      // // Remove duplicates
-      // const uniqueGenres = Array.from(
-      //   new Map(combinedGenres.map((g) => [g.id, g])).values()
-      // );
-      // setGenres(uniqueGenres);
+      setGenres(genreData || []);
     }
     fetchTrendingMedia();
   }, []);
@@ -52,7 +46,7 @@ const TrendingSection = () => {
         <div className="flex items-center ">
           <button
             ref={prevRef}
-            className="group bg-[var(--color-muted)] hover:bg-gray-300 px-3 py-3 rounded cursor-pointer"
+            className="group bg-[var(--color-muted)] hover:bg-gray-300 px-3 sm:p-3 py-3 rounded cursor-pointer"
           >
             <FaPlay className="text-[var(--color-primary)] group-hover:text-[var(--color-secondary)]" />
           </button>
@@ -62,6 +56,24 @@ const TrendingSection = () => {
         {swiperReady && (
           <Swiper
             slidesPerView={3}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 8,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 12,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 14,
+              },
+            }}
             spaceBetween={0}
             grid={{ rows: 1 }}
             modules={[Grid, Navigation]}
@@ -79,7 +91,7 @@ const TrendingSection = () => {
           >
             {trending.map((trend) => (
               <SwiperSlide key={trend.id}>
-                <TrendingCard item={trend}  />
+                <TrendingCard item={trend} genres={genres} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -89,7 +101,7 @@ const TrendingSection = () => {
         <div className="flex items-center ">
           <button
             ref={nextRef}
-            className="group bg-[var(--color-muted)] hover:bg-gray-300 px-3 py-3 rounded cursor-pointer"
+            className="group bg-[var(--color-muted)] hover:bg-gray-300 px-3 sm:p-3 py-3 rounded cursor-pointer"
           >
             <FaPlay className="text-[var(--color-primary)] group-hover:text-[var(--color-secondary)]" />
           </button>

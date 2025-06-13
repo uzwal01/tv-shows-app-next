@@ -57,7 +57,10 @@ export async function getYoutubeTrailer(type, id) {
   return FetchFromTMDB(`/${type}/${id}?language=en-US&append_to_response=videos`)
 }
 
-export async function getGenreMapping(type) {
-  const res = await FetchFromTMDB(`/genre/${type}/list?language=en-US`);
-  return res?.genres || []; // ✅ Return only the genres array
+
+// Merged two genre lists i.e. movie genre and tv genre
+export async function getGenreList() {
+  const movie = await FetchFromTMDB(`/genre/movie/list?language=en-US`);
+  const tv = await FetchFromTMDB(`/genre/tv/list?language=en-US`);
+  return [...(movie?.genres || []), ...(tv?.genres || [])];
 }
