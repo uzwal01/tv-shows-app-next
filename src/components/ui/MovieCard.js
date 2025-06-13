@@ -55,7 +55,7 @@ const MovieCard = ({ item }) => {
 
           {/* Title */}
           <div className="pt-4">
-            <h5 className="text-md sm:text-sm font-semibold sm:font-light line-clamp-2 h-[40px] text-[var(--color-text)] group-hover:text-[var(--color-secondary)] transition-colors duration-300">
+            <h5 className="text-sm sm:text-sm font-semibold sm:font-light line-clamp-2 h-[40px] text-[var(--color-text)] group-hover:text-[var(--color-secondary)] transition-colors duration-300">
               {title}
             </h5>
           </div>

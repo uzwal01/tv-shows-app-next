@@ -36,7 +36,7 @@ const TrendingCard = ({ item, genres }) => {
 
       <div className="absolute bottom-0 left-0 w-full h-[100px] bg-gradient-to-t from-black/90 to-transparent text-[var(--color-text)] group-hover:from-[var(--color-secondary)]/50 group-hover:to-transparent transition-all duration-300">
         <div className="absolute bottom-10 left-4 right-4">
-          <h5 className="text-md sm:text-sm font-semibold sm:font-light line-clamp-1 group-hover:text-[var(--color-text)]">
+          <h5 className="text-sm sm:text-sm font-semibold sm:font-light line-clamp-1 group-hover:text-[var(--color-text)]">
             {title.toUpperCase()}
           </h5>
         </div>
