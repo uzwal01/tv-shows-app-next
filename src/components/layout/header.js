@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import { HiBars3BottomLeft } from "react-icons/hi2";
 import { IoMdSearch } from "react-icons/io";
@@ -8,6 +9,7 @@ import { IoMdSearch } from "react-icons/io";
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
   
   // Close Menu onclick, anywhere on window
   const menuRef = useRef(null); 
@@ -15,7 +17,11 @@ const Header = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Searching for:", searchTerm);
+    if(!searchTerm.trim()) 
+      return;
+
+    router.push(`/search?query=${encodeURIComponent(searchTerm)}`);
+    setSearchTerm("");
   };
 
 

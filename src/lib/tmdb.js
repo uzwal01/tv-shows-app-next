@@ -52,10 +52,10 @@ export async function getMediaDetails(type, id) {
 }
 
 
-// Watch Youtube Trailer
-export async function getYoutubeTrailer(type, id) {
-  return FetchFromTMDB(`/${type}/${id}?language=en-US&append_to_response=videos`)
-}
+// // Watch Youtube Trailer
+// export async function getYoutubeTrailer(type, id) {
+//   return FetchFromTMDB(`/${type}/${id}?language=en-US&append_to_response=videos`)
+// }
 
 
 // Merged two genre lists i.e. movie genre and tv genre
@@ -63,4 +63,9 @@ export async function getGenreList() {
   const movie = await FetchFromTMDB(`/genre/movie/list?language=en-US`);
   const tv = await FetchFromTMDB(`/genre/tv/list?language=en-US`);
   return [...(movie?.genres || []), ...(tv?.genres || [])];
+}
+
+// Search Form
+export async function getSearchList(query) {
+  return FetchFromTMDB(`/search/multi?query=${query}`)
 }
