@@ -42,21 +42,22 @@ const MovieCard = ({ item }) => {
           <div className="w-[160px] h-[120px] max-w-[210px] mx-auto cursor-pointer ">
             <div className="flex flex-col justify-between py-3">
               {/* Rating box */}
-              <div className="min-h-[30px] flex items-center justify-between">
+              <div className="min-h-[30px] flex items-center justify-between px-1">
                 <div className="bg-[var(--color-yellow)]  rounded w-[38px] h-[29px] flex items-center justify-center">
                   <span className="text-black text-sm font-semibold">
                     {rating}
                   </span>
                 </div>
-                {/* Favorite Button */}
-                <div>
-                  <FavoriteBtnCard media={item} />
-                </div>
+                
                 {/* Released Year */}
                 <div className="">
                   <span className="text-[var(--color-muted)] text-xs">
                     {item.release_date?.slice(0, 4) || "N/A"}
                   </span>
+                </div>
+                {/* Favorite Button */}
+                <div>
+                  <FavoriteBtnCard media={item} />
                 </div>
               </div>
 

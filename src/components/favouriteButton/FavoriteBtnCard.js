@@ -24,7 +24,7 @@ const FavoriteBtnCard = ({ media }) => {
     <div>
       {/* Favorite Button */}
       <div
-        className="flex items-center justify-center gap-2 cursor-pointer text-[var(--color-muted)] hover:text-[var(--color-secondary)]"
+        className="flex items-center justify-center gap-2 cursor-pointer text-[var(--color-muted)] hover:text-[var(--color-secondary)] transition-colors duration-300"
         onClick={handleFavourite}
       >
         {isFavorited(media.id) ? <BsBookmarkCheckFill  className="text-lg" /> : <BsBookmark className="text-lg"/>}
