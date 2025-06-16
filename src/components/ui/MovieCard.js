@@ -1,5 +1,3 @@
-import { useFavorites } from "@/lib/FavoritesContext";
-
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -15,7 +13,6 @@ const MovieCard = ({ item }) => {
     : "/image.png";
 
   const type = item.title ? "movie" : "tv";
-  const { favorites, removeFavorites } = useFavorites();
 
   return (
     <>
@@ -48,7 +45,7 @@ const MovieCard = ({ item }) => {
                     {rating}
                   </span>
                 </div>
-                
+
                 {/* Released Year */}
                 <div className="">
                   <span className="text-[var(--color-muted)] text-xs">

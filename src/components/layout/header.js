@@ -10,25 +10,22 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  
+
   // Close Menu onclick, anywhere on window
-  const menuRef = useRef(null); 
-  
+  const menuRef = useRef(null);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if(!searchTerm.trim()) 
-      return;
+    if (!searchTerm.trim()) return;
 
     router.push(`/search?query=${encodeURIComponent(searchTerm)}`);
     setSearchTerm("");
   };
 
-
-//Close menu on scroll or click on the window screen
+  //Close menu on scroll or click on the window screen
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if(menuRef.current && !menuRef.current.contains(event.target)) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
@@ -38,51 +35,54 @@ const Header = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("scroll", handleClickOutside);
-    }
+    };
   }, []);
 
   return (
     <>
-      <section className="py-5 px-4 md:px-0">
-        <div className="grid grid-cols-3 text-center gap-2 md:grid-flow-col">
+      <section className="py-5 w-full bg-[var(--color-header-footer)]">
+        <div className="max-w-[1280px] mx-auto grid grid-cols-3 text-center gap-2 md:grid-flow-col">
           <div className="flex gap-4 items-center">
             {/* Menu  */}
-            <div className="relative inline-block test-left" ref={menuRef}>
+            <div className="relative inline-block " ref={menuRef}>
               <HiBars3BottomLeft
                 className="text-[var(--color-muted)] hover:text-[var(--color-secondary)] transition text-2xl cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
               />
               {/* toggle menu */}
-
-              {isOpen && (
-                <div className="absolute w-[120px] bg-[var(--color-secondary)] top-15 rounded-lg shadow-lg py-5 px-5 text-left z-10 font-semibold text-[var(--color-primary)] transition-colors duration-300">
-                  <Link href="/">
-                    <h4 className="py-1 hover:text-[var(--color-yellow)]">
-                      Home
-                    </h4>
-                  </Link>
-                  <Link href="/about">
-                    <h4 className="py-1 hover:text-[var(--color-yellow)]">
-                      About
-                    </h4>
-                  </Link>
-                  <Link href="/movies">
-                    <h4 className="py-1 hover:text-[var(--color-yellow)]">
-                      Movies
-                    </h4>
-                  </Link>
-                  <Link href="/tv">
-                    <h4 className="py-1 hover:text-[var(--color-yellow)]">
-                      TV Shows
-                    </h4>
-                  </Link>
-                  <Link href="/favorites">
-                    <h4 className="py-1 hover:text-[var(--color-yellow)]">
-                      Favorites
-                    </h4>
-                  </Link>
-                </div>
-              )}
+              <div
+                className={`absolute w-[120px] bg-[var(--color-secondary)] rounded-lg shadow-lg px-5 text-left z-10 font-semibold text-[var(--color-primary)] transition-all duration-300 overflow-hidden ${
+                  isOpen
+                    ? "max-h-[500px] py-5 opacity-100"
+                    : "max-h-0 py-0 opacity-0"
+                }`}
+              >
+                <Link href="/">
+                  <h4 className="py-1 hover:text-[var(--color-yellow)]">
+                    Home
+                  </h4>
+                </Link>
+                <Link href="/about">
+                  <h4 className="py-1 hover:text-[var(--color-yellow)]">
+                    About
+                  </h4>
+                </Link>
+                <Link href="/movies">
+                  <h4 className="py-1 hover:text-[var(--color-yellow)]">
+                    Movies
+                  </h4>
+                </Link>
+                <Link href="/tv">
+                  <h4 className="py-1 hover:text-[var(--color-yellow)]">
+                    TV Shows
+                  </h4>
+                </Link>
+                <Link href="/favorites">
+                  <h4 className="py-1 hover:text-[var(--color-yellow)]">
+                    Favorites
+                  </h4>
+                </Link>
+              </div>
             </div>
             <Link href="/">
               <Image

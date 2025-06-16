@@ -4,8 +4,7 @@ import React from "react";
 import { MdDateRange } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
 import { FaStar } from "react-icons/fa6";
-import FavouriteBtn from "../../../../components/favouriteButton/FavoriteBtn"
-
+import FavouriteBtn from "../../../../components/favouriteButton/FavoriteBtn";
 
 const MediaDetailPage = async ({ params }) => {
   const { mediaType, id } = await params;
@@ -49,89 +48,89 @@ const MediaDetailPage = async ({ params }) => {
   // );
   // const trailerkey = trailer?.key
 
-
   return (
     <>
-      {/* Backdrop Image */}
-      <div className="w-full h-[500px] relative">
-        <Image
-          src={imageOriginal + backdrop_path}
-          alt={title || name}
-          layout="fill"
-          objectFit="cover"
-          className="object-cover opacity-60 blur-[0.1rem]"
-        />
-        {/* Content - overlay */}
-        <div className="absolute inset-0 flex justify-between items-center gap-[30px] px-10">
-          {/* Left - Poster */}
-          <div className="w-[300px] min-w-[300px]">
-            <Image
-              src={imageBase + poster_path}
-              alt={title || name}
-              width={300}
-              height={370}
-              className="rounded-lg"
-            />
-          </div>
+      <section className="h-screen w-full">
+        {/* Backdrop Image */}
+        <div className="w-full h-[500px] relative">
+          <Image
+            src={imageOriginal + backdrop_path}
+            alt={title || name}
+            layout="fill"
+            objectFit="cover"
+            className="object-cover opacity-60 blur-[0.1rem]"
+          />
+          {/* Content - overlay */}
+          <div className="absolute inset-0 flex justify-between items-center gap-[30px] px-10">
+            {/* Left - Poster */}
+            <div className="w-[300px] min-w-[300px]">
+              <Image
+                src={imageBase + poster_path}
+                alt={title || name}
+                width={300}
+                height={370}
+                className="rounded-lg"
+              />
+            </div>
 
-          {/* Right - Details */}
-          <div className="h-full py-5">
-            <div className="p-5">
-              {/* Title */}
-              <div className="flex items-center gap-2 flex-wrap mb-2">
-                <h1 className="text-3xl font-bold">{title || name}</h1>
-                {release_date && (
-                  <span className="text-2xl text-[var(--color-muted)]">
-                    ({release_date.slice(0, 4)})
-                  </span>
-                )}
-              </div>
+            {/* Right - Details */}
+            <div className="h-full py-5">
+              <div className="p-5">
+                {/* Title */}
+                <div className="flex items-center gap-2 flex-wrap mb-2">
+                  <h1 className="text-3xl font-bold">{title || name}</h1>
+                  {release_date && (
+                    <span className="text-2xl text-[var(--color-muted)]">
+                      ({release_date.slice(0, 4)})
+                    </span>
+                  )}
+                </div>
 
-              {/* Meta Info */}
-              <div className="flex flex-wrap items-center gap-4 text-sm text-[var(--color-text)]">
-                <div className="flex items-center gap-2">
-                  <MdDateRange className="text-xl" />
-                  {release_date || first_air_date} ({origin_country})
-                </div>
-                <div className="flex items-center gap-1">
-                  <GoDotFill className="text-xs" />
-                  <p key={genres.id}>
-                    {genres.map((genre) => genre.name).join(", ")}
-                  </p>
-                </div>
-                <div className="flex items-center gap-1">
-                  <GoDotFill className="text-xs" />
-                  <p>{time}</p>
-                </div>
-              </div>
-
-              <div
-                className="flex justify-start gap-[80px] items-center py-2 my-5
-             "
-              >
-                {/* Ratings */}
-                <div className="flex justify-center items-center gap-2 ml-2">
-                  <FaStar className="text-3xl text-[var(--color-yellow)]" />
-                  <div className="flex-col">
-                    <div>
-                      <span className="font-bold text-lg">
-                        {vote_average?.toFixed(1)}
-                      </span>
-                      <span className="text-md text-[var(--color-muted)]">
-                        /10
-                      </span>
-                    </div>
-                    <div className="text-xs text-[var(--color-muted)]">
-                      {vote_count}
-                    </div>
+                {/* Meta Info */}
+                <div className="flex flex-wrap items-center gap-4 text-sm text-[var(--color-text)]">
+                  <div className="flex items-center gap-2">
+                    <MdDateRange className="text-xl" />
+                    {release_date || first_air_date} ({origin_country})
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <GoDotFill className="text-xs" />
+                    <p key={genres.id}>
+                      {genres.map((genre) => genre.name).join(", ")}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <GoDotFill className="text-xs" />
+                    <p>{time}</p>
                   </div>
                 </div>
-                {/* Favorite Button */}
-                <div>
-                  <FavouriteBtn media={media} />
-                </div>
 
-                {/* Youtube Trialer
+                <div
+                  className="flex justify-start gap-[80px] items-center py-2 my-5
+             "
+                >
+                  {/* Ratings */}
+                  <div className="flex justify-center items-center gap-2 ml-2">
+                    <FaStar className="text-3xl text-[var(--color-yellow)]" />
+                    <div className="flex-col">
+                      <div>
+                        <span className="font-bold text-lg">
+                          {vote_average?.toFixed(1)}
+                        </span>
+                        <span className="text-md text-[var(--color-muted)]">
+                          /10
+                        </span>
+                      </div>
+                      <div className="text-xs text-[var(--color-muted)]">
+                        {vote_count}
+                      </div>
+                    </div>
+                  </div>
+                  {/* Favorite Button */}
+                  <div>
+                    <FavouriteBtn media={media} />
+                  </div>
+
+                  {/* Youtube Trialer
                 <div>
                   {trailer ? (
                     <div className="relative h-[300px] w-full mt-4">
@@ -151,14 +150,15 @@ const MediaDetailPage = async ({ params }) => {
                     </p>
                   )}
                 </div>*/}
-              </div>
+                </div>
 
-              {/* Overview */}
-              <p className="text-[var(--color-text)]">{overview}</p>
+                {/* Overview */}
+                <p className="text-[var(--color-text)]">{overview}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

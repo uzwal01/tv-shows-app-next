@@ -4,7 +4,7 @@ import { IoInformationCircle } from "react-icons/io5";
 const About = () => {
   return (
     <>
-      <section className="h-screen">
+      <section className="h-screen my-[50px]">
         <div className="flex items-center gap-2 py-5 px-4 md:px-0">
         <IoInformationCircle className="text-[1.9em] text-[var(--color-secondary)]" />
         <h2 className="">About</h2>
