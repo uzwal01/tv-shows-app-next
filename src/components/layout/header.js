@@ -76,7 +76,7 @@ const Header = () => {
                       TV Shows
                     </h4>
                   </Link>
-                  <Link href="/favourites">
+                  <Link href="/favorites">
                     <h4 className="py-1 hover:text-[var(--color-yellow)]">
                       Favorites
                     </h4>

@@ -4,7 +4,8 @@ import React from "react";
 import { MdDateRange } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
 import { FaStar } from "react-icons/fa6";
-import { BsBookmark } from "react-icons/bs";
+import FavouriteBtn from "../../../../components/favouriteButton/FavoriteBtn"
+
 
 const MediaDetailPage = async ({ params }) => {
   const { mediaType, id } = await params;
@@ -48,9 +49,6 @@ const MediaDetailPage = async ({ params }) => {
   // );
   // const trailerkey = trailer?.key
 
-  // const fav = handleFavourite() => {
-
-  // }
 
   return (
     <>
@@ -129,9 +127,8 @@ const MediaDetailPage = async ({ params }) => {
                   </div>
                 </div>
                 {/* Favorite Button */}
-                <div className="flex items-center justify-center gap-2 cursor-pointer hover:text-[var(--color-secondary)]">
-                  <BsBookmark className="text-2xl" />
-                  <h4>Favorite</h4>
+                <div>
+                  <FavouriteBtn media={media} />
                 </div>
 
                 {/* Youtube Trialer
