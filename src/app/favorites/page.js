@@ -11,7 +11,7 @@ const FavoritesList = () => {
 
   return (
     <>
-      <div className="my-[50px]">
+      <section className="my-[50px]">
         <div className="flex items-center gap-2 py-5 px-4 md:px-0">
             <BsBookmarkHeartFill className="text-[1.9em] text-[var(--color-secondary)]"/>
 
@@ -27,7 +27,7 @@ const FavoritesList = () => {
             ))}
           </div>
         )}
-      </div>
+      </section>
     </>
   );
 };

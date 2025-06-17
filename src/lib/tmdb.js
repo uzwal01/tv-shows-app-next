@@ -30,11 +30,18 @@ export async function getTrendingMedia(type = "all", time = "day") {
 }
 
 export async function getLatestMovies() {
+  return FetchFromTMDB(`/movie/popular?language=en-US&page=1`);
+}
+export async function getPopularMovies() {
   return FetchFromTMDB(`/movie/now_playing?language=en-US&page=1`);
 }
 
+
 export async function getLatestTV() {
   return FetchFromTMDB(`/tv/on_the_air?language=en-US&page=1`);
+}
+export async function getPopularTV() {
+  return FetchFromTMDB(`/tv/popular?language=en-US&page=1`);
 }
 
 export async function getTopRatedMovies() {
@@ -64,6 +71,7 @@ export async function getGenreList() {
   const tv = await FetchFromTMDB(`/genre/tv/list?language=en-US`);
   return [...(movie?.genres || []), ...(tv?.genres || [])];
 }
+
 
 // Search Form
 export async function getSearchList(query) {
