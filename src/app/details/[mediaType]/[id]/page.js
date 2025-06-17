@@ -50,44 +50,43 @@ const MediaDetailPage = async ({ params }) => {
 
   return (
     <>
-      <section className="h-screen w-full">
+      <section className="min-h-screen w-full">
         {/* Backdrop Image */}
-        <div className="w-full h-[500px] relative">
+        <div className="relative w-full h-[300px] sm:h-[500px]">
           <Image
             src={imageOriginal + backdrop_path}
             alt={title || name}
             layout="fill"
-            objectFit="cover"
-            className="object-cover opacity-60 blur-[0.1rem]"
+            className="object-contain object-center sm:object-cover opacity-60 blur-[0.07rem]"
           />
           {/* Content - overlay */}
-          <div className="absolute inset-0 flex justify-between items-center gap-[30px] px-10">
+          <div className="absolute inset-0 flex items-center justify-start px-4 md:px-10">
             {/* Left - Poster */}
-            <div className="w-[300px] min-w-[300px]">
+            <div className="w-[100px] sm:w-[150px] md:w-[300px] relative sm:static top-0 left-0">
               <Image
                 src={imageBase + poster_path}
                 alt={title || name}
                 width={300}
                 height={370}
-                className="rounded-lg"
+                className="rounded-lg shadow-lg"
               />
             </div>
 
             {/* Right - Details */}
-            <div className="h-full py-5">
-              <div className="p-5">
+            <div className="absolute sm:static top-[300px] sm:top-0 sm:ml-6 h-full flex-1">
+              <div className="p-2 md:p-5 text-[var(--color-text)]">
                 {/* Title */}
-                <div className="flex items-center gap-2 flex-wrap mb-2">
-                  <h1 className="text-3xl font-bold">{title || name}</h1>
+                <div className="flex items-center gap-2 flex-wrap mb-2 sm:mt-6">
+                  <h1 className="text-xl md:text-3xl font-bold">{title || name}</h1>
                   {release_date && (
-                    <span className="text-2xl text-[var(--color-muted)]">
+                    <span className="text-xl md:text-2xl text-[var(--color-muted)]">
                       ({release_date.slice(0, 4)})
                     </span>
                   )}
                 </div>
 
                 {/* Meta Info */}
-                <div className="flex flex-wrap items-center gap-4 text-sm text-[var(--color-text)]">
+                <div className="flex flex-row flex-wrap items-center gap-2 text-sm text-[var(--color-text)]">
                   <div className="flex items-center gap-2">
                     <MdDateRange className="text-xl" />
                     {release_date || first_air_date} ({origin_country})
@@ -105,13 +104,14 @@ const MediaDetailPage = async ({ params }) => {
                 </div>
 
                 <div
-                  className="flex justify-start gap-[80px] items-center py-2 my-5
+                  className="flex flex-col sm:flex-row gap-6 items-start sm:items-center py-2 my-5
              "
                 >
-                  {/* Ratings */}
-                  <div className="flex justify-center items-center gap-2 ml-2">
+                 <div className="flex items-center gap-8">
+                   {/* Ratings */}
+                  <div className="flex items-center gap-2 ">
                     <FaStar className="text-3xl text-[var(--color-yellow)]" />
-                    <div className="flex-col">
+                    <div>
                       <div>
                         <span className="font-bold text-lg">
                           {vote_average?.toFixed(1)}
@@ -126,9 +126,10 @@ const MediaDetailPage = async ({ params }) => {
                     </div>
                   </div>
                   {/* Favorite Button */}
-                  <div>
+                  <div className="ml-6">
                     <FavouriteBtn media={media} />
                   </div>
+                 </div>
 
                   {/* Youtube Trialer
                 <div>
@@ -153,7 +154,7 @@ const MediaDetailPage = async ({ params }) => {
                 </div>
 
                 {/* Overview */}
-                <p className="text-[var(--color-text)]">{overview}</p>
+                <p className="text-sm md:text-base leading-relaxed text-[var(--color-text)]">{overview}</p>
               </div>
             </div>
           </div>
