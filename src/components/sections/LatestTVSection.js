@@ -37,7 +37,7 @@ const LatestTVSection = () => {
 
       {/* View More button */}
       <div className="flex justify-center mt-6">
-        <Link href="/series">
+        <Link href="/tvshows">
           <button className="flex justify-center items-center gap-2 hover:text-[var(--color-secondary)] w-[120px] h-[35px] rounded-2xl text-[var(--color-muted)] border border-[var(--color-muted)] hover:border-[var(--color-secondary)] transition-colors duration-300 cursor-pointer">
             <h5>View More</h5>
             <div>
