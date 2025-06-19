@@ -1,4 +1,4 @@
-"use client";
+
 import SearchBar from "@/components/ui/SearchBar";
 import React from "react";
 import { Suspense } from "react";
