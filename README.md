@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎬 Movie Search & Favorites App
 
-## Getting Started
+A mobile-responsive movie search and favorites application built using **Next.js**, **Tailwind CSS**, and **React Icons**. This project allows users to search for movies via the TMDB API, view search results, and manage a personal list of favorite movies stored locally in the browser.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🔍 **Movie Search**  
+  - Search for movies/tv shows by title using the TMDB API  
+  - Display poster, title, and release year for each result  
+  - Show a loading indicator while fetching data  
+  - Graceful error handling (e.g., no results, network issues)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- ⭐ **Favorites Management**  
+  - Add/remove movies from favorites  
+  - View a separate list of favorited movies  
+  - Persist favorites in `localStorage` across browser sessions  
+  - Prevent duplicate entries in favorites list
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🎛️ **Bonus (Optional Enhancements)**  
+  - Toggle between search results and favorite list views  
+  - Responsive layout and clean UI using Tailwind CSS  
+  - Icons via React Icons for enhanced UX  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Framework**: [Next.js](https://nextjs.org/)  
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)  
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons)  
+- **API**: [TMDB API](https://www.themoviedb.org/documentation/api)  
+- **Storage**: `localStorage` for client-side persistence  
+- **State Management**: React Hooks (`useState`, `useEffect`,`useRef`,`useContext`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🧩 Component Breakdown
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `SearchBar`: Handles input and submit for movie queries  
+- `MovieList/TvList`: Displays list of movies/tv shows (search results or favorites)  
+- `MovieCard`: Individual movie UI with add/remove favorite button  
+- `FavoritesList`: Displays user's favorite movies  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📸 Screenshots
+
+- `Home Page`
+![Home Page](image.png)
+
+- `Favorites Page`
+![Favorites Page](image-1.png)
+
+- `Movie Details`
+![Movie Details](image-2.png)
