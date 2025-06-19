@@ -55,3 +55,12 @@ A mobile-responsive movie search and favorites application built using **Next.js
 
 - `Movie Details`
 ![Movie Details](image-2.png)
+
+---
+
+## 🧠 Learnings & Focus
+- Practiced API integration using fetch and environment variables
+- Applied React Hooks for state and lifecycle handling
+- Strengthened component-based thinking in Next.js
+- Implemented localStorage sync using useEffect
+- Built and styled a responsive UI without overengineering
